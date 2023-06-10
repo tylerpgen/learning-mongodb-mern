@@ -20,3 +20,15 @@ router.get("/:id", async (req, res) => {
   if (!result) res.send("Not Found").status(404);
   else res.send(result).status(200);
 });
+
+// Creating a new record
+router.post("/", async (req, res) => {
+  let newDocument = {
+    name: req.body.name,
+    position: req.body.position,
+    level: req.body.level,
+  };
+  let collection = await db.collection("records");
+  let result = await collection.insertOne(newDocument);
+  res.send(result).status(204);
+});
