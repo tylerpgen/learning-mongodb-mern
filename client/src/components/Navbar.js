@@ -1,4 +1,4 @@
-import "boostrap/dist/css/bootstrap.css";
+// import "boostrap/dist/css/bootstrap.css";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {

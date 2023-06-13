@@ -1,21 +1,24 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/navbar";
-import RecordList from "./components/recordList";
-import Edit from "./components/edit";
-import Create from "./components/create";
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import RecordList from "./components/RecordList";
+import Edit from "./components/Edit";
+import Create from "./components/Create";
 
 const App = () => {
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Navbar />}>
+        <Route index element={<RecordList />} />
+        <Route path="/edit/:id" element={<Edit />} />
+        <Route path="/create" element={<Create />} />
+      </Route>
+    )
+  );
+
   return (
     <div>
-      <Navbar />
-      <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element={<RecordList />} />
-          <Route exact path="/edit/:id" element={<Edit />} />
-          <Route exact path="/create" element={<Create />} />
-        </Routes>
-      </BrowserRouter>
+      <RouterProvider router={router} />
     </div>
   );
 };
