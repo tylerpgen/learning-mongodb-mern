@@ -14,7 +14,7 @@ const RecordList = () => {
             <th>Action</th>
           </tr>
         </thead>
-        <tbody>{recordList()}</tbody>
+        <tbody>{RecordList()}</tbody>
       </table>
     </div>
   );
